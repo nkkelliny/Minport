@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Minport</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+</head>
+<body>
+  <div id="stage">
+    <video id="cam" autoplay playsinline muted></video>
+    <canvas id="overlay"></canvas>
+    <div class="cursor" id="cursor"></div>
+
+    <div id="topbar">
+      <div class="brand">Minport</div>
+      <div class="spacer"></div>
+      <button id="galleryBtn" title="Open Widget Gallery">☰ Widgets</button>
+      <button id="micBtn" title="Toggle voice control">🎤</button>
+      <button id="resetBtn" title="Reset layout">↺</button>
+    </div>
+
+    <div class="grid" id="grid"><!-- cards are created dynamically now --></div>
+
+    <div class="hud" id="hud">hand: — | gesture: —</div>
+
+    <div id="voiceHUD">
+      <div id="voiceText">Voice: off</div>
+      <div id="aiText">AI: —</div>
+    </div>
+
+    <!-- Widget Gallery Drawer -->
+    <aside id="gallery">
+      <header>
+        <strong>Widget Gallery</strong>
+        <button id="galleryClose" title="Close">✕</button>
+      </header>
+
+      <section>
+        <h4>Available Widgets</h4>
+        <div id="galleryList" class="gallery-list"><!-- filled by JS --></div>
+      </section>
+
+      <section class="add-url">
+        <h4>Add by URL (iframe)</h4>
+        <label>Title <input id="urlTitle" placeholder="My Widget"></label>
+        <label>URL <input id="urlInput" placeholder="https://example.com"></label>
+        <button id="addUrlBtn">Add to Desktop</button>
+        <p class="note">Some sites block embedding; if so, you'll see an “Open in Browser” button.</p>
+      </section>
+    </aside>
+    <div id="galleryScrim"></div>
+  </div>
+
+    <script type="module" src="./widgets.js"></script>
+  <script type="module" src="./ai.js"></script>
+  <script src="./renderer.js"></script>
+</body>
+</html>

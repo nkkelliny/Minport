@@ -1,0 +1,64 @@
+:root { --bg:#0f1220; --card:#141a2e; --text:#e9edf7; --muted:#9aa4b2; --accent:#5aa8ff; }
+html,body { height:100%; margin:0; background:var(--bg); color:var(--text); font-family:system-ui, Segoe UI, Roboto, sans-serif; }
+#stage { position:relative; width:100%; height:100%; overflow:hidden; }
+
+#topbar{
+  position:absolute; top:10px; left:10px; right:10px;
+  display:flex; align-items:center; gap:10px;
+  padding:8px 10px; background:#0006; border:1px solid #ffffff18; border-radius:12px; backdrop-filter: blur(6px);
+}
+#topbar .brand { font-weight:700; letter-spacing:.3px; }
+#topbar .spacer { flex:1; }
+#topbar button { background:#202846; color:#cfe2ff; border:1px solid #ffffff18; border-radius:10px; padding:8px 12px; cursor:pointer; }
+#topbar button:hover { background:#28305a; }
+
+video#cam { position:absolute; right:12px; bottom:12px; width:240px; opacity:.14; border-radius:12px; }
+canvas#overlay { position:absolute; inset:0; width: 100vw; height: 100vh; pointer-events:none; }
+
+.grid { position:absolute; inset:60px 24px 24px 24px; display:grid; grid-template-columns:repeat(3,minmax(280px, 1fr)); gap:16px; pointer-events:none; }
+.card {
+  background:var(--card); border:1px solid #ffffff18; border-radius:16px; padding:10px 14px; pointer-events:auto; user-select:none;
+  transform-origin:center center; position:absolute; left:0; top:0;
+}
+.card header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; color:var(--muted); font-size:14px; }
+.card .content { font-size:14px; min-height:120px; }
+.card .toolbar { display:flex; gap:6px; }
+.card .toolbar button { background:#202846; color:#cfe2ff; border:1px solid #ffffff18; border-radius:8px; padding:4px 8px; cursor:pointer; font-size:12px; }
+.card .toolbar button:hover { background:#28305a; }
+
+.cursor { position:absolute; width:18px; height:18px; border:2px solid var(--accent); border-radius:50%;
+  box-shadow:0 0 0 2px #5aa8ff33; pointer-events:none; transform:translate(-50%, -50%); }
+.grabbing { border-color:#77e07f; box-shadow:0 0 0 2px #77e07f33; }
+
+.hud { position:absolute; left:12px; bottom:12px; background:#0006; padding:8px 10px; border-radius:8px; font-size:12px; border:1px solid #ffffff18; }
+
+#voiceHUD {
+  position:absolute; right:12px; top:60px; min-width:260px; background:#0006; border:1px solid #ffffff18; border-radius:12px; padding:10px;
+}
+#voiceText, #aiText { font-size:13px; color:#dbe7ff; margin:4px 0; word-break: break-word; }
+
+/* Widget Gallery Drawer */
+#gallery {
+  position:absolute; top:0; right:-380px; width:360px; height:100%;
+  background:#0c1020; border-left:1px solid #ffffff18; padding:12px; box-shadow:-10px 0 30px rgba(0,0,0,.3);
+  transition:right .25s cubic-bezier(.2,.8,.2,1); z-index:5;
+}
+#gallery.open { right:0; }
+#galleryScrim {
+  position:absolute; inset:0; background:#0007; opacity:0; pointer-events:none; transition:opacity .2s; z-index:4;
+}
+#galleryScrim.show { opacity:1; pointer-events:auto; }
+#gallery header { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+#gallery header button { background:#202846; color:#cfe2ff; border:1px solid #ffffff18; border-radius:8px; padding:6px 8px; cursor:pointer; }
+#gallery section { margin:12px 0; }
+.gallery-list { display:flex; flex-direction:column; gap:8px; }
+.widget-row { display:flex; align-items:center; justify-content:space-between; gap:8px; border:1px solid #ffffff18; border-radius:10px; padding:8px; }
+.widget-row .meta { display:flex; flex-direction:column; }
+.widget-row .title { font-weight:600; }
+.widget-row .desc { color:#9aa4b2; font-size:12px; }
+.widget-row button { background:#202846; color:#cfe2ff; border:1px solid #ffffff18; border-radius:8px; padding:6px 10px; cursor:pointer; }
+.widget-row button:hover { background:#28305a; }
+.add-url label { display:block; font-size:12px; color:#9aa4b2; margin-top:8px; }
+.add-url input { width:100%; padding:8px; border-radius:8px; border:1px solid #ffffff18; background:#141a2e; color:#e9edf7; }
+.add-url button { margin-top:10px; width:100%; background:#284b8a; border:1px solid #ffffff18; padding:10px; border-radius:10px; color:#e9edf7; cursor:pointer; }
+.add-url .note { color:#9aa4b2; font-size:12px; margin-top:6px; }
