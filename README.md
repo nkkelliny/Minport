@@ -3,6 +3,8 @@ Minport
 
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen.svg) ![Version](https://img.shields.io/badge/version-1.1.0-blue.svg) ![Platform](https://img.shields.io/badge/platform-Electron-47848F.svg)
 
+<img src="https://github.com/Hubbzy/Minport/blob/main/minport_screenshot.jpg">
+
 Hand-tracked, voice-driven desktop widgets in **Electron** with a **Widget Gallery**, **custom URL widgets**, and a **brick game**.
 
 * * *
